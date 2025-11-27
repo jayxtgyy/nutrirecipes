@@ -1,11 +1,16 @@
-// dom
+/* ===== dom ===== */ 
+// region dropdown select
 const regionFilter = document.getElementById("regionFilter");
+// cuisine card container
 const cuisineContainer = document.getElementById("cuisineContainer");
+// modal & content container
 const cuisineModal = document.getElementById("cuisineModal");
 const cuisineModalBody = document.getElementById("cuisineModalBody");
+// modal close
 const cuisineModalClose = cuisineModal.querySelector(".close");
 
-// region dropdown
+/* ===== region dropdown ===== */
+// list of available cuisine regions
 const regions = [
     "American", "British", "Canadian", "Chinese", "Croatian",
     "Dutch", "Egyptian", "Filipino", "French", "Greek",
@@ -15,6 +20,7 @@ const regions = [
     "Turkish", "Vietnamese"
 ];
 
+// populate region dropdown
 regions.forEach(region => {
     const option = document.createElement("option");
     option.value = region;
@@ -22,6 +28,7 @@ regions.forEach(region => {
     regionFilter.appendChild(option);
 });
 
+// region select listener
 regionFilter.addEventListener("change", () => {
     const chosen = regionFilter.value;
 
@@ -33,7 +40,7 @@ regionFilter.addEventListener("change", () => {
     fetchByRegion(chosen);
 });
 
-// fetch by region
+/* ===== fetch meals by region ===== */
 function fetchByRegion(region) {
     const url = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${region}`;
 
@@ -43,8 +50,9 @@ function fetchByRegion(region) {
         .catch(err => console.error("Error fetching meals :", err));
 }
 
-// display
+/* ===== display cuisines ===== */
 function displayMeals(meals, region) {
+    // region heading
     cuisineContainer.innerHTML = `
         <h2>${region} Cuisine</h2>
     `;
@@ -54,6 +62,7 @@ function displayMeals(meals, region) {
         return;
     }
 
+    // grid container for cuisine cards
     const grid = document.createElement("div");
     grid.classList.add("cuisine-grid");
 
@@ -61,35 +70,42 @@ function displayMeals(meals, region) {
         const card = document.createElement("div");
         card.classList.add("cuisine-card");
 
+        // card content : thumbnail, meal name
         card.innerHTML = `
             <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
             <h3>${meal.strMeal}</h3>
         `;
 
+        // click listener to open modal with full details
         addCardClickListener(card, meal);
         grid.appendChild(card);
     });
     cuisineContainer.appendChild(grid);
 }
 
-// cuisine modal
+/* ===== cuisine modal ===== */
 function addCardClickListener(card, meal) {
     card.addEventListener("click", () => {
+        // fetch meal details by ID
         fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
             .then(res => res.json())
             .then(data => {
                 const fullMeal = data.meals[0];
                 const ingredients = getIngredientsList(fullMeal);
-                const steps = fullMeal.strInstructions
-                    .split(/\r?\n/)
-                    .map(line => line.trim())
-                    .filter(line => line.length > 0)
-                    .map(line => line.replace(/^Step\s*\d+[:.-]?\s*/i, ''));
 
+                // filter instructions
+                const steps = fullMeal.strInstructions
+                    .split(/\r?\n/) // split string at each line break
+                    .map(line => line.trim()) // remove extra spaces at start or end of each line
+                    .filter(line => line.length > 0) // remove empty lines
+                    .map(line => line.replace(/^Step\s*\d+[:.-]?\s*/i, '')); // remove step prefixes from each line
+
+                // convert ingredients and steps arrays into html lists
                 const ingredientsHTML = ingredients.map(ing => `<li>${ing}</li>`).join('');
 
                 const stepsHTML = steps.map(step => `<li>${step}</li>`).join('');
 
+                // populate modal content
                 cuisineModalBody.innerHTML = `
                     <img src="${fullMeal.strMealThumb}" alt="${fullMeal.strMeal}">
                     <h3>${fullMeal.strMeal}</h3>
@@ -109,7 +125,7 @@ function addCardClickListener(card, meal) {
     });
 }
 
-// ingredients extractor
+/* ===== ingredients extractor ===== */
 function getIngredientsList(meal) {
     const ingredients = [];
     for (let i = 1; i <= 20; i++) {
@@ -122,7 +138,7 @@ function getIngredientsList(meal) {
     return ingredients;
 }
 
-// modal close logic
+/* ===== modal close logic ===== */
 cuisineModalClose.addEventListener("click", () => {
     cuisineModal.style.display = "none";
 });
@@ -133,7 +149,7 @@ window.addEventListener("click", (e) => {
     }
 });
 
-// newsletter
+/* ===== newsletter form logic ===== */
 const newsletterForm = document.getElementById("newsletter-form");
 const newsletterEmail = document.getElementById("newsletter-email");
 const newsletterMessage = document.getElementById("newsletter-message");

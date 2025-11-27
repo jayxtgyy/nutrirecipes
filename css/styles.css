@@ -1,3 +1,4 @@
+/* ===== global ===== */
 body {
     color: #39250c;
     font-family : 'Times New Roman', Times, serif;
@@ -6,6 +7,7 @@ body {
     padding: 0;
 }
 
+/* ===== navigation ===== */
 nav ul {
     list-style: none;
     margin: 20px 60px 15px 0;
@@ -20,6 +22,7 @@ nav a {
     font-weight: bold; 
 }
 
+/* ===== header ===== */
 header {
     background-color: #bcecac;
     padding: 20px 60px;
@@ -42,6 +45,7 @@ nav a:hover {
     color : #0077cc;
 }
 
+/* ===== landing section ===== */
 #landing {
     position: relative;
     height: 75vh;
@@ -85,6 +89,7 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
+/* ===== search form ===== */
 #search-form {
     display: flex;
     justify-content: center;
@@ -113,6 +118,7 @@ nav a:hover {
     background: #e69500;
 }
 
+/* ===== recipes container & cards ===== */
 #recipesContainer {
     display: flex;
     flex-wrap: wrap;
@@ -135,6 +141,7 @@ nav a:hover {
     border-radius: 10px;
 }
 
+/* ===== modal ===== */
 .modal {
     position: fixed;
     z-index: 1000;
@@ -198,6 +205,7 @@ nav a:hover {
     cursor: pointer;
 }
 
+/* ===== footer ===== */
 footer {
     background-color: #bcecac;
     padding: 30px 20px;
@@ -248,6 +256,7 @@ footer .footer-copy {
     color: #555;
 }
 
+/* ===== responsive footer ===== */
 @media (max-width: 768px) {
     footer {
         flex-direction: column;
@@ -268,6 +277,7 @@ footer .footer-copy {
     }
 }
 
+/* ===== cuisine section & cards ===== */
 .cuisine-section {
     text-align: center;
     display: flex;
@@ -310,6 +320,7 @@ footer .footer-copy {
     border-radius: 10px;
 }
 
+/* ===== category section & cards ===== */
 .categories-section {
     text-align: center;
     padding: 20px;
@@ -362,8 +373,9 @@ footer .footer-copy {
     color: #39250c;
 }
 
+/* ===== responsive category grid ===== */
 @media (max-width: 600px) {
-    .categories-container {
+    .categories-grid {
         grid-template-columns: 1fr;
     }
 }

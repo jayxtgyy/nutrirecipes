@@ -1,10 +1,10 @@
-// dom
+/* ===== dom ===== */
 const categoriesContainer = document.getElementById("categoriesContainer");
 const categoryModal = document.getElementById("categoryModal");
 const categoryModalBody = document.getElementById("categoryModalBody");
 const categoryModalClose = categoryModal.querySelector(".close")
 
-// fetch categories
+/* ===== fetch categories ===== */
 function fetchCategories() {
     fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
         .then(res => res.json())
@@ -12,7 +12,7 @@ function fetchCategories() {
         .catch(err => console.error("Error fetching categories :", err));
 }
 
-// display category cards
+/* ===== display categories ===== */
 function displayCategories(categories) {
     const grid = document.createElement("div");
     grid.classList.add("categories-grid");
@@ -21,12 +21,14 @@ function displayCategories(categories) {
         const card = document.createElement("div");
         card.classList.add("category-card");
 
+        // card content : thumbnail, category name, short description
         card.innerHTML = `
             <img src="${cat.strCategoryThumb}" alt="${cat.strCategory}">
             <h3>${cat.strCategory}</h3>
             <p>${cat.strCategoryDescription.substring(0, 80)}...</p>
         `;
 
+        // click listener to fetch meals within category
         card.addEventListener("click", () => fetchMealsByCategory(cat.strCategory));
         grid.appendChild(card);
     });
@@ -34,7 +36,7 @@ function displayCategories(categories) {
     categoriesContainer.appendChild(grid);
 }
 
-// fetch meals by category
+/* ===== fetch meals by selected category ===== */
 function fetchMealsByCategory(category) {
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
         .then(res => res.json())
@@ -42,7 +44,7 @@ function fetchMealsByCategory(category) {
         .catch(err => console.error("Error fetching meals by category :", err));
 }
 
-// display meals in modal
+/* ===== display meals in modal ===== */
 function displayMealsModal(category, meals) {
     let html = `<h2>${category} Meals</h2><div class="cuisine-grid">`;
 
@@ -52,7 +54,7 @@ function displayMealsModal(category, meals) {
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                 <h3>${meal.strMeal}</h3>
             </div>
-        `;
+        `; // add card for each meal
     });
 
     html += `</div>`;
@@ -60,16 +62,16 @@ function displayMealsModal(category, meals) {
     categoryModal.style.display = "flex";
 }
 
-// modal close logic
+/* ===== modal close logic ===== */
 categoryModalClose.addEventListener("click", () => categoryModal.style.display = "none");
 window.addEventListener("click", e => {
     if (e.target === categoryModal) categoryModal.style.display = "none";
 });
 
-// initialize
+/* ===== initialize page ===== */
 fetchCategories();
 
-// newsletter 
+/* ===== newsletter form logic ===== */
 const newsletterForm = document.getElementById("newsletter-form");
 const newsletterEmail = document.getElementById("newsletter-email");
 const newsletterMessage = document.getElementById("newsletter-message");

@@ -8,11 +8,13 @@
 	</head>
 
 <body>
+	<!-- header section -->
 	<header>
 		<a href="index.html" class="logo">
 			<img src="images/nutrirecipes.png" alt="NutriRecipes Logo">
 		</a>
 
+		<!-- header navigation links -->
 		<nav>
 			<ul>
 				<li><a href="cuisine.html">Cuisine</a></li>
@@ -22,19 +24,25 @@
 		</nav>
 	</header>
 
+	<!-- main browsing section -->
 	<main>
         <section class="cuisine-section">
             <h1>Explore Cuisines by Region</h1>
+
+			<!-- dropdown for region selection -->
             <label for="regionFilter">Choose a Cuisine :</label>
             <select id="regionFilter">
                 <option value="none">Select Region</option>
             </select>
 
+			<!-- container for displaying fetched cuisine -->
             <div id="cuisineContainer" class="cuisine-container"></div>
         </section>
 	</main>
 
+	<!-- footer section -->
 	<footer>
+		<!-- newsletter form -->
 		<div class="newsletter">
 			<h3>Join the NutriRecipe Club!</h3>
 			<p>Subscribe here for weekly healthy recipe tips and nutrition guides!</p>
@@ -51,6 +59,7 @@
 			<p id="newsletter-message"></p>
 		</div>
 
+		<!-- footer navigation links -->
 		<div class="footer-nav">
 			<ul>
 				<li><a href="#about">About</a></li>
@@ -63,6 +72,7 @@
 
 	</footer>
 
+	<!-- cuisine modal -->
     <div id="cuisineModal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -70,6 +80,7 @@
         </div>
     </div>
 
+	<!-- cuisine page specific js -->
     <script src="js/cuisine.js"></script>
 </body>
 </html>

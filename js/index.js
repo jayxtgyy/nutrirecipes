@@ -1,6 +1,9 @@
-// dom
+/* ===== dom ===== */
+// form : search recipes by ingredient
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
+
+// container for displaying fetched recipes
 const recipesContainer = document.getElementById('recipesContainer');
 
 // modal
@@ -8,7 +11,8 @@ const recipeModal = document.getElementById('recipeModal');
 const modalBody = document.getElementById('modalBody');
 const modalClose = recipeModal.querySelector('.close');
 
-// search form
+/* ===== search form logic ===== */
+// form submission listener
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -18,7 +22,7 @@ searchForm.addEventListener('submit', (event) => {
     }
 });
 
-// fetch recipes
+/* ===== fetch recipes from api ===== */
 function fetchRecipes(query) {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`;
 
@@ -30,7 +34,7 @@ function fetchRecipes(query) {
         .catch(err => console.error(`Error fetching recipes :`, err));
 }
 
-// display recipes
+/* ===== display recipes ===== */
 function displayRecipes(meals) {
     recipesContainer.innerHTML = '';
 
@@ -43,6 +47,7 @@ function displayRecipes(meals) {
         const card = document.createElement('div');
         card.classList.add('recipe-card');
 
+        // card content : thumbnail, title, short instruction, hidden full instructions, button
         card.innerHTML = `
             <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
             <h3>${meal.strMeal}</h3>
@@ -59,14 +64,15 @@ function displayRecipes(meals) {
 
             const button = card.querySelector('.show-btn');
 
-            // open modal on click
+            /* ===== modal logic for full recipe ===== */
             button.addEventListener('click', () => {
-                
+                // filter instructions
                 const steps = meal.strInstructions
-                    .split(/\r?\n/)
-                    .map(step => step.trim())
-                    .filter(step => step !== '' && !/^step\s*\d+/i.test(step));
+                    .split(/\r?\n/) // split string at each line break
+                    .map(step => step.trim()) // remove extra spaces at start or end of each line 
+                    .filter(step => step !== '' && !/^step\s*\d+/i.test(step)); // remove blank lines and "step 1", "step 2"
             
+                // populate modal content
                 modalBody.innerHTML = `
                     <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                     <h3>${meal.strMeal}</h3>
@@ -85,7 +91,7 @@ function displayRecipes(meals) {
     });
 }
 
-// ingredients extractor
+/* ===== ingredients extractor ===== */
 function getIngredientsList(meal) {
     const ingredients = [];
     for (let i = 1; i <= 20; i++) {
@@ -98,7 +104,7 @@ function getIngredientsList(meal) {
     return ingredients;
 }
 
-// modal close logic
+/* ===== modal close logic ===== */
 modalClose.addEventListener('click', () => {
     recipeModal.style.display = 'none';
 });
@@ -109,7 +115,7 @@ window.addEventListener('click', (e) => {
     }
 });
 
-// icon float
+/* ===== floating icon animation ===== */
 function startFloating(icon) {
     const direction = Math.random() > 0.5 ? 1 : -1;
 
@@ -135,6 +141,7 @@ function startFloating(icon) {
 
         icon.style.transform = `translate(${x + offsetX}px, ${y}px)`;
 
+        // restart animation when icon goes offscreen
         if (direction === 1 && x > window.innerWidth + 100)
             return restart(icon);
         if (direction === -1 && x < - 700) 
@@ -146,13 +153,15 @@ function startFloating(icon) {
     animate();
 }
 
+// restart animation after a random delay
 function restart(icon) {
     setTimeout(() => startFloating(icon), 500 + Math.random() * 2500);
 }
 
+// start animation for all icons
 document.querySelectorAll(".icon").forEach(icon => startFloating(icon));
 
-// newsletter 
+/* ===== newsletter form logic ===== */
 const newsletterForm = document.getElementById("newsletter-form");
 const newsletterEmail = document.getElementById("newsletter-email");
 const newsletterMessage = document.getElementById("newsletter-message");
