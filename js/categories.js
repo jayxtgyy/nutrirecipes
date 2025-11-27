@@ -1,91 +1,75 @@
-const regionFilter = document.getElementById('regionFilter');
-const cuisineContainer = document.getElementById('cuisineContainer');
+// dom
+const categoriesContainer = document.getElementById("categoriesContainer");
+const categoryModal = document.getElementById("categoryModal");
+const categoryModalBody = document.getElementById("categoryModalBody");
+const categoryModalClose = categoryModal.querySelector(".close")
 
-let allRegions = [];
-
-// fetch cuisines
-fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
-    .then(res => res.json())
-    .then(data => {
-        const categories = data.categories;
-
-        allRegions = [...new Set(categories.map(cat => cat.strCategory))];
-
-        populateDropdown(allRegions);
-        displayCuisines(categories);
-    })
-    .catch(err => console.error('Error fetching categories:', err));
-
-// populate
-function populateDropdown(regions) {
-    regions.forEach(region => {
-        const option = document.createElement('option');
-        option.value = region;
-        option.textContent = region;
-        regionFilter.appendChild(option);
-    });
+// fetch categories
+function fetchCategories() {
+    fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
+        .then(res => res.json())
+        .then(data => displayCategories(data.categories))
+        .catch(err => console.error("Error fetching categories :", err));
 }
 
-// display cards
-function displayCuisines(cuisines) {
-    cuisineContainer.innerHTML = '';
+// display category cards
+function displayCategories(categories) {
+    const grid = document.createElement("div");
+    grid.classList.add("categories-grid");
 
-    cuisines.forEach(cuisine => {
-        const card = document.createElement('div');
-        card.classList,add('cuisine-card');
+    categories.forEach(cat => {
+        const card = document.createElement("div");
+        card.classList.add("category-card");
 
         card.innerHTML = `
-            <img src="${cuisine.strCategoryThumb}" alt="${cuisine.strCategory}">
-            <h3>${cuisine.strCategory}</h3>
-            <p>${cuisine.strCategoryDescription.slice(0, 100)}...</p>
-            <button class="view-btn">View Recipes</button>
+            <img src="${cat.strCategoryThumb}" alt="${cat.strCategory}">
+            <h3>${cat.strCategory}</h3>
+            <p>${cat.strCategoryDescription.substring(0, 80)}...</p>
         `;
 
-        const button = card.querySelector('.view-btn');
-        button.addEventListener('click', () => {
-            fetchMealsByRegion(cuisine.strGategory);
-        });
-
-        cuisineContainer.appendChild(card);
+        card.addEventListener("click", () => fetchMealsByCategory(cat.strCategory));
+        grid.appendChild(card);
     });
+
+    categoriesContainer.appendChild(grid);
 }
 
-// filter by region
-regionFilter.addEventListener('change', () => {
-    const selected = regionFilter.value;
-    if (selected === 'all') {
-        fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
-            .then(res => res.json())
-            .then(data => displayCuisines(data.categories));
-    } else {
-        fetchMealsByRegion(selected);
-    }
+// fetch meals by category
+function fetchMealsByCategory(category) {
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+        .then(res => res.json())
+        .then(data => displayMealsModal(category, data.meals))
+        .catch(err => console.error("Error fetching meals by category :", err));
+}
+
+// display meals in modal
+function displayMealsModal(category, meals) {
+    let html = `<h2>${category} Meals</h2><div class="cuisine-grid">`;
+
+    meals.forEach(meal => {
+        html += `
+            <div class="cuisine-card">
+                <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                <h3>${meal.strMeal}</h3>
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+    categoryModalBody.innerHTML = html;
+    categoryModal.style.display = "flex";
+}
+
+// modal close logic
+categoryModalClose.addEventListener("click", () => categoryModal.style.display = "none");
+window.addEventListener("click", e => {
+    if (e.target === categoryModal) categoryModal.style.display = "none";
 });
 
-// fetch meals by region
-function fetchMealsByRegion(region) {
-    const url = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${region}`;
-    fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            cuisineContainer.innerHTML = '';
-            if (!data.meals) {
-                cuisineContainer.innerHTML = '<p>No recipes found for this region.</p>';
-                return;
-            }
-            data.meals.forEach(meal => {
-                const card = document.createElement('div');
-                card.classList.add('cuisine-card');
-                card.innerHTML = `
-                    <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-                    <h3>${meal.strMeal}</h3>
-                `;
-                cuisineContainer.appendChild(card);
-            });
-        })
-        .catch(err => console.error('Error fetching meals by region:', err));
-}
+// initialize
+fetchCategories();
 
+// newsletter 
 const newsletterForm = document.getElementById("newsletter-form");
 const newsletterEmail = document.getElementById("newsletter-email");
 const newsletterMessage = document.getElementById("newsletter-message");

@@ -309,3 +309,61 @@ footer .footer-copy {
     object-fit: cover;
     border-radius: 10px;
 }
+
+.categories-section {
+    text-align: center;
+    padding: 20px;
+}
+
+.categories-section h1 {
+    color: #39250c;
+    margin-bottom: 20px;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    justify-items: center;
+    margin: 0 20px;
+}
+
+.category-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.category-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.category-card h3 {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+    color: #39250c;
+}
+
+.category-card p {
+    font-size: 0.95rem;
+    padding: 0 10px 10px;
+    color: #39250c;
+}
+
+@media (max-width: 600px) {
+    .categories-container {
+        grid-template-columns: 1fr;
+    }
+}

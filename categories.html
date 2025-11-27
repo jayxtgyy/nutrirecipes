@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>NutriRecipes App</title>
+		<title>Categories | NutriRecipes</title>
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
 
@@ -23,15 +23,10 @@
 	</header>
 
 	<main>
-        <section class="cuisine-section">
-            <h1>Explore Cuisines</h1>
-            <label for="regionFilter">Filter by Region:</label>
-            <select id="regionFilter">
-                <option value="all">All</option>
-            </select>
-
-            <div id="cuisineContainer" class="cuisine-container"></div>
-        </section>
+		<section class="categories-section">
+			<h1>Explore Categories</h1>
+			<div id="categoriesContainer" class="categories-container"></div>
+		</section>
 	</main>
 
 	<footer>
@@ -64,10 +59,10 @@
 
 	</footer>
 	
-	<div id="recipeModal" class="modal" style="display:none;">
+	<div id="categoryModal" class="modal" style="display:none;">
 		<div class="modal-content">
 			<span class="close">&times;</span>
-			<div id="modalBody"></div>
+			<div id="categoryModalBody"></div>
 		</div>
 	</div>
 
