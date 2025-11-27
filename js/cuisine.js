@@ -83,7 +83,8 @@ function addCardClickListener(card, meal) {
                 const steps = fullMeal.strInstructions
                     .split(/\r?\n/)
                     .map(line => line.trim())
-                    .filter(line => line.length > 0);
+                    .filter(line => line.length > 0)
+                    .map(line => line.replace(/^Step\s*\d+[:.-]?\s*/i, ''));
 
                 const ingredientsHTML = ingredients.map(ing => `<li>${ing}</li>`).join('');
 
