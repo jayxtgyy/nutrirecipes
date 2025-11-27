@@ -1,4 +1,5 @@
 body {
+    color: #39250c;
     font-family : 'Times New Roman', Times, serif;
     background-color: #bcecac;
     margin: 0;
@@ -21,10 +22,20 @@ nav a {
 
 header {
     background-color: #bcecac;
-    padding: 15px 0 0 60px;
+    padding: 20px 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+header .logo img {
+    height: 60px;
+    width: auto;
+    cursor: pointer;
+}
+
+header .logo {
+    display: inline-block;
 }
 
 nav a:hover {
@@ -33,7 +44,7 @@ nav a:hover {
 
 #landing {
     position: relative;
-    height: 100vh;
+    height: 75vh;
     background: #bcecac;
     overflow: hidden;
 
@@ -45,17 +56,23 @@ nav a:hover {
 
 .floating-icons {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
     pointer-events: none;
+    z-index: 0;
 }
 
 .icon {
     position: absolute;
     width: 70px;
-    opacity: 0.15;
+}
+
+.landing-content {
+    position: relative;
+    z-index: 10;
 }
 
 .landing-content h1 {
@@ -116,6 +133,69 @@ nav a:hover {
 .recipe-card img {
     width: 100%;
     border-radius: 10px;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-content img {
+    max-width: 40%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+}
+
+.modal-content ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.modal-content li {
+    margin-bottom: 8px;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.modal .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
 }
 
 footer {
@@ -186,4 +266,46 @@ footer .footer-copy {
         justify-content: center;
         gap: 15px;
     }
+}
+
+.cuisine-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+#cuisineContainer {
+    text-align: center;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+}
+
+.cuisine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.cuisine-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform .2s ease;
+}
+
+.cuisine-card:hover {
+    transform: scale(1.05);
+}
+
+.cuisine-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
 }

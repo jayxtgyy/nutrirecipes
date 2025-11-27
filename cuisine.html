@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>NutriRecipes App</title>
+		<title>Cuisines | NutriRecipes</title>
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
 
@@ -23,36 +23,18 @@
 	</header>
 
 	<main>
-		<section id="landing">
-			<div class="floating-icons">
-				<img src="images/red.png" class="icon red">
-				<img src="images/orange.png" class="icon orange">
-				<img src="images/yellow.png" class="icon yellow">
-				<img src="images/green.png" class="icon green">
-				<img src="images/blue.png" class="icon blue">
-				<img src="images/white.png" class="icon white">
-			</div>
+        <section class="cuisine-section">
+            <h1>Explore Cuisines by Region</h1>
+            <label for="regionFilter">Choose a Cuisine :</label>
+            <select id="regionFilter">
+                <option value="none">Select Region</option>
+            </select>
 
-			<div class="landing-content">
-				<h1>Find Healthy Recipes</h1>
-				<p>Search by ingredients that you already have</p>
-
-				<form id="search-form">
-					<input
-						type="text"
-						placeholder="Enter ingredient here..."
-						id="search-input"
-					>
-					<button type="submit">Search</button>
-				</form>
-			</div>
-		</section>
-
-		<div id="recipesContainer"></div>
+            <div id="cuisineContainer" class="cuisine-container"></div>
+        </section>
 	</main>
 
 	<footer>
-
 		<div class="newsletter">
 			<h3>Join the NutriRecipe Club!</h3>
 			<p>Subscribe here for weekly healthy recipe tips and nutrition guides!</p>
@@ -80,14 +62,14 @@
 		<p class="footer-copy">© 2025 NutriRecipes. All rights reserved.</p>
 
 	</footer>
-	
-	<div id="recipeModal" class="modal" style="display:none;">
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<div id="modalBody"></div>
-		</div>
-	</div>
 
-    <script src="js/index.js"></script>
+    <div id="cuisineModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="cuisineModalBody"></div>
+        </div>
+    </div>
+
+    <script src="js/cuisine.js"></script>
 </body>
 </html>
