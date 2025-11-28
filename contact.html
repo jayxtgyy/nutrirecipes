@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Contact Us | NutriRecipes App</title>
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+
+<body>
+	<!-- header section -->
+	<header>
+		<a href="index.html" class="logo">
+			<img src="images/nutrirecipes.png" alt="NutriRecipes Logo">
+		</a>
+
+		<!-- header navigation links -->
+		<nav>
+			<ul>
+				<li><a href="cuisine.html">Cuisine</a></li>
+				<li><a href="categories.html">Categories</a></li>
+				<li><a href="all.html">All</a></li>
+			</ul>
+		</nav>
+	</header>
+	
+	<!-- main landing section -->
+	<main>
+        <section class="contact-section">
+
+            <h1>Contact Us</h1>
+            <p class="subtitle">Have questions, suggestions, or feedback? we'd love to hear from you!</p>
+
+            <div class="contact-wrapper">
+
+                <form class="contact-form" action="#" method="post">
+                    <label>Name</label>
+                    <input type="text" name="name" placeholder="Your name" required>
+
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Your email" required>
+
+                    <label>Message</label>
+                    <textarea name="message" rowws="6" placeholder="Write your message..." required></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p>Email : <strong>support@nutrirecipes.com</strong></p>
+                    <p>We respond in 2-3 working days.</p>
+
+                    <h2>Find us on our Socials!</h2>
+                    <p>Instagram • Facebook • TikTok</p>
+                </div>
+            </div>
+        </section>
+	</main>
+
+
+	<!-- footer section -->
+	<footer>
+
+		<!-- newsletter form -->
+		<div class="newsletter">
+			<h3>Join the NutriRecipe Club!</h3>
+			<p>Subscribe here for weekly healthy recipe tips and nutrition guides!</p>
+
+			<form id="newsletter-form">
+				<input
+					type="email"
+					id="newsletter-email"
+					placeholder="Enter your email here"
+					required>
+				<button type="submit">Subscribe</button>
+			</form>
+
+			<p id="newsletter-message"></p>
+		</div>
+
+		<!-- footer navigation links -->
+		<div class="footer-nav">
+			<ul>
+				<li><a href="about.html">About</a></li>
+				<li><a href="contact.html">Contact</a></li>
+				<li><a href="privacy.html">Privacy Policy</a></li>
+			</ul>
+		</div>
+
+		<p class="footer-copy">© 2025 NutriRecipes. All rights reserved.</p>
+
+	</footer>
+	
+	<!-- recipe modal -->
+	<div id="recipeModal" class="modal" style="display:none;">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div id="modalBody"></div>
+		</div>
+	</div>
+	
+	<!-- main js file -->
+    <script src="js/all.js"></script>
+</body>
+</html>
