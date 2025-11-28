@@ -149,13 +149,11 @@ nav a:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    box-sizing: border-box;
 }
 
 .modal-content {
@@ -163,13 +161,10 @@ nav a:hover {
     padding: 20px;
     width: 90%;
     max-width: 800px;
-    max-height: 80vh;
-    overflow-y: auto;
+    max-height: 85vh;
     border-radius: 10px;
+    overflow-y: auto;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .modal-content img {
@@ -302,7 +297,7 @@ footer .footer-copy {
 
 .cuisine-card {
     background: #fff;
-    padding: 15px;
+    padding: 10px;
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
@@ -313,7 +308,7 @@ footer .footer-copy {
     transform: scale(1.05);
 }
 
-.cuisine-card img {
+.cuisine-card:not(.meal-card) img {
     width: 100%;
     height: 160px;
     object-fit: cover;
@@ -371,6 +366,63 @@ footer .footer-copy {
     font-size: 0.95rem;
     padding: 0 10px 10px;
     color: #39250c;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: #39250c;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-bottom: 10px;
+    color: #39250c;
+}
+
+.cuisine-card.meal-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform .2s ease;
+    padding: 10px;
+}
+
+.cuisine-card.meal-card:hover {
+    transform: scale(1.05);
+}
+
+.cuisine-card.meal-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.cuisine-card.meal-card h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: #39250c;
+}
+
+.full-meal-img {
+    width: 80%;
+    max-width:700px;
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 10px;
 }
 
 /* ===== responsive category grid ===== */
