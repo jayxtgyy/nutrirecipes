@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>All | NutriRecipes App</title>
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+
+<body>
+	<!-- header section -->
+	<header>
+		<a href="index.html" class="logo">
+			<img src="images/nutrirecipes.png" alt="NutriRecipes Logo">
+		</a>
+
+		<!-- header navigation links -->
+		<nav>
+			<ul>
+				<li><a href="cuisine.html">Cuisine</a></li>
+				<li><a href="categories.html">Categories</a></li>
+				<li><a href="all.html">All</a></li>
+			</ul>
+		</nav>
+	</header>
+	
+	<!-- main landing section -->
+	<main>
+
+	</main>
+
+	<!-- footer section -->
+	<footer>
+
+		<!-- newsletter form -->
+		<div class="newsletter">
+			<h3>Join the NutriRecipe Club!</h3>
+			<p>Subscribe here for weekly healthy recipe tips and nutrition guides!</p>
+
+			<form id="newsletter-form">
+				<input
+					type="email"
+					id="newsletter-email"
+					placeholder="Enter your email here"
+					required>
+				<button type="submit">Subscribe</button>
+			</form>
+
+			<p id="newsletter-message"></p>
+		</div>
+
+		<!-- footer navigation links -->
+		<div class="footer-nav">
+			<ul>
+				<li><a href="#about">About</a></li>
+				<li><a href="#contact">Contact</a></li>
+				<li><a href="#privacy">Privacy Policy</a></li>
+			</ul>
+		</div>
+
+		<p class="footer-copy">© 2025 NutriRecipes. All rights reserved.</p>
+
+	</footer>
+	
+	<!-- recipe modal -->
+	<div id="recipeModal" class="modal" style="display:none;">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div id="modalBody"></div>
+		</div>
+	</div>
+	
+	<!-- main js file -->
+    <script src="js/all.js"></script>
+</body>
+</html>
