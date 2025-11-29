@@ -3,6 +3,18 @@
 NutriRecipes App is a web application designed for cooking enthusiasts and health-conscious individuals.
 Enter an ingredient you have on hand, and the app will generate nutritious recipes you can make at home.
 
+## Table of Contents
+**1.** [UX](#ux)  
+**2.** [Features](#features)  
+**3.** [Tech Stack](#tech-stack)  
+**4.** [Installation & Setup](#installation-&-setup)  
+**5.** [Usage](#usage)  
+**6.** [Testing](#testing)  
+**7.** [Deployment](#deployment)  
+**8.** [Credits](#credits)  
+**9.** [Contributing & License](#contributing-&-license)
+
+
 ## UX
 ### Project Goals
 - Provide quick, healthy recipe ideas based on available ingredients.
@@ -109,3 +121,5 @@ Any updates pushed to the repository automatically update the live site
 ## Contributing & License
 - This project is free to use for personal purposes.
 - Contributions are **not allowed** at this time.
+  
+Access GitHub repo : [here](/https://github.com/jayxtgyy/nutrirecipes.git) .
