@@ -432,6 +432,67 @@ footer .footer-copy {
     }
 }
 
+/* ===== all section ===== */
+.all-section {
+    padding: 10px 10px;
+}
+
+.all-section {
+    text-align: center;
+    color: #39250c;
+    margin-bottom: 30px;
+}
+
+#allMealsContainer {
+    margin: 5px;
+}
+
+.letter-block {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.letter-label {
+    flex: 1;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #39250c;
+}
+
+.meal-list {
+    flex: 9;
+    display: flex;
+    flex-wrap: wrap;
+    gap:15px;
+}
+
+.meal-card {
+    width: 220px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.2s ease;
+}
+
+.meal-card:hover {
+    transform: scale(1.05);
+}
+
+.meal-card img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.meal-card h4 {
+    font-size: 1rem;
+    margin-top: 8px;
+    color: #39250c;
+}
+
 /* ===== about section ===== */
 .about-section {
     padding: 40px 20px;
