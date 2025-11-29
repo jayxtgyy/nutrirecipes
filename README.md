@@ -2,7 +2,7 @@
 
 NutriRecipes App is a web application designed for cooking enthusiasts and health-conscious individuals.
 Enter an ingredient you have on hand, and the app will generate nutritious recipes you can make at home.
-
+xhN
 ## Table of Contents
 **1.** [UX](#ux)  
 **2.** [Features](#features)  
